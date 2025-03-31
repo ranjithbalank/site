@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWebsite</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts: Open Sans and Pacifico -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: 700;
+        }
+
+        /*  updated code for the paralllex effect  */
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: transparent;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar-brand {
+            font-family: 'Pacifico', cursive;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .navbar .nav-link {
+            color: white;
+            font-size: 1rem;
+            margin-right: 15px;
+        }
+
+        .navbar .nav-link:hover {
+            color: #28a745;
+        }
+
+        .navbar .nav-link.active {
+            color: white;
+            border-bottom: 2px solid white;
+        }
+
+        .navbar .fa-chevron-down {
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        .navbar .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+            font-size: 1rem;
+            padding: 5px 15px;
+        }
+
+        /* Center the logo in the navbar */
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand-centered {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Hero Section Styles */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .hero-section h1,
+        .hero-section .lead {
+            color: white;
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+        }
+
+        .hero-section .lead {
+            font-size: 1.25rem;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        /*===============================================================================================================*/
+        /* Hero Section Animations */
+        /* .hero-section h1 {
+            animation: slideInRight 1s ease-out;
+        } */
+
+        /* .hero-section .lead {
+            animation: slideInRight 1s ease-out 0.5s;
+        } */
+        /* 
+        .hero-section .btn {
+            animation: bounceIn 1s ease-out 1s;
+        } */
+        /*===================================================================================================================*/
+
+        /* New Services Section (Streamlined Solutions Style) */
+        .services-section {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #fff;
+            position: relative;
+        }
+
+        .services-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to bottom, #fff 0%, #000 100%);
+            clip-path: ellipse(80% 50% at 50% 100%);
+            z-index: 1;
+        }
+
+        .services-section h1 {
+            font-size: 2.5rem;
+            color: #333;
+            font-weight: bold;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .services-section .lead {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .service-box {
+            padding: 20px;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .service-box:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .service-box:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .service-box:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .service-box:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .service-text {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Clan Section */
+        .clan-section {
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .clan-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            padding: 20px;
+            border: 1px solid white;
+            display: inline-block;
+            animation: pulseGlow 2s infinite;
+        }
+
+        .clan-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .clan-card {
+            position: relative;
+            perspective: 1000px;
+            height: 320px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .clan-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card-front {
+            background-color: #f8f9fa;
+            color: black;
+        }
+
+        .card-back {
+            background-color: #e9ecef;
+            color: black;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .clan-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .clan-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .clan-card .card-content {
+            padding: 15px;
+        }
+
+        .clan-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .clan-card p {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        /* Work Culture Section */
+        .work-culture-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work-culture-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            animation: shine 3s infinite;
+        }
+
+        .pulse-btn {
+            animation: pulse 2s infinite;
+        }
+
+        /* Support Section */
+        .support-section i {
+            animation: bounce 2s infinite;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-us {
+            min-height: 450px;
+            background-attachment: fixed;
+        }
+
+        .why-choose-us .text-content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .why-choose-us li {
+            opacity: 0;
+            animation: slideInLeft 0.5s ease-out forwards;
+        }
+
+        .why-choose-us li:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .why-choose-us li:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .why-choose-us li:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 50px 0;
+            background-color: #fff;
+        }
+
+        .portfolio-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .portfolio-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .portfolio-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .portfolio-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Testimonial Section */
+        .testimonials {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 0 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-item.active .testimonial-card {
+            animation: zoomIn 0.5s ease-out;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 50px 0;
+        }
+
+        .accordion-item {
+            opacity: 0;
+            animation: fadeInRight 0.5s ease-out forwards;
+        }
+
+        .accordion-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .accordion-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .accordion-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        /* Footer */
+        footer {
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                transform: translateX(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 5px rgba(22, 90, 74, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 15px rgba(22, 90, 74, 1);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(22, 90, 74, 0.5);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+
+            20% {
+                left: 100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .clan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .clan-title {
+                font-size: 2rem;
+            }
+
+            .portfolio-card {
+                margin-bottom: 20px;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section .lead {
+                font-size: 1rem;
+            }
+
+            .navbar-brand-centered {
+                position: static;
+                transform: none;
+            }
+
+            .navbar .container {
+                flex-direction: column;
+            }
+        }
+
+        .testimonial-section {
+            width: 100%;
+            overflow: hidden;
+            padding: 50px 0;
+            background: #000;
+            color: #fff;
+        }
+
+        .testimonial-container {
+            display: flex;
+            width: max-content;
+            animation: scroll 20s linear infinite;
+        }
+
+        .testimonial {
+            flex: 0 0 300px;
+            margin: 0 20px;
+            padding: 20px;
+            background: #222;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .testimonial img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home </a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services <i class="fas fa-chevron-down"></i></a>
+                    </li>
+                </ul>
+                <a class="navbar-brand navbar-brand-centered" href="#">Develup.</a>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-success clan-title" href="#">Contact</a>
+                    </li>
+
+                </ul>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <h1 id="typewriter" class="display-2"></h1> <!-- Empty initially -->
+                    <h3 class="lead mt-3">
+                        At Develup, we specialize in crafting seamless and innovative digital solutions tailored to your
+                        needs. Discover how our expert UI/UX design can elevate your project.
+                    </h3>
+                    <div class="mt-3">
+                        <a class="btn btn-dark me-2" href="#">Learn More</a>
+                        <a class="btn btn-outline-light" href="#">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-md-6"></div> <!-- Empty column to maintain layout -->
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const text = "Transforming Ideas into Digital Experiences"; // Your heading text
+            const speed = 100; // Typing speed in milliseconds
+            let index = 0;
+
+            function typeEffect() {
+                if (index < text.length) {
+                    document.getElementById("typewriter").innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeEffect, speed);
+                }
+            }
+
+            typeEffect(); // Start typing effect when page loads
+        });
+    </script>
+
+
+    <!-- Updated Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h1>Streamlined Digital Solutions</h1>
+            <p class="lead">Optimize your business operations with our efficient digital solutions crafted for seamless
+                integration and enhanced productivity.</p>
+            <div class="row mt-5">
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-box">
+                        <i class="fas fa-laptop service-icon"></i>
+                        <h2 class="service-title">Web Design & Development</h2>
+                        <p class="service-text">Create stunning, responsive websites tailored to your brand, ensuring a
+                            seamless user experience.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-box">
+                        <i class="fas fa-code service-icon"></i>
+                        <h2 class="service-title">Software Development</h2>
+                        <p class="service-text">Build custom software solutions to automate processes and boost
+                            productivity for your business.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-box">
+                        <i class="fas fa-shield-alt service-icon"></i>
+                        <h2 class="service-title">Cybersecurity</h2>
+                        <p class="service-text">Protect your digital assets with robust security protocols and proactive
+                            threat management.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-box">
+                        <i class="fas fa-lightbulb service-icon"></i>
+                        <h2 class="service-title">Technical Consulting</h2>
+                        <p class="service-text">Leverage expert guidance to implement technology solutions that drive
+                            growth and efficiency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clan Section -->
+    <section class="clan-section">
+        <h1 class="clan-title">We Work As Clans</h1>
+        <div class="container">
+            <div class="clan-grid">
+                <div class="clan-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=60"
+                                alt="Team Discussion">
+                            <div class="card-content">
+                                <h3>We Listen to You</h3>
+                                <p>First, we sit with you to understand your needs in a simple and clear way.</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3>More About Listening</h3>
+                            <p>We prioritize active listening to capture your vision accurately.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clan-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=60"
+                                alt="Team Planning">
+                            <div class="card-content">
+                                <h3>Team Plan</h3>
+                                <p>Our team crafts a detailed and actionable plan tailored to your goals.</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3>Planning Details</h3>
+                            <p>Includes brainstorming sessions and feasibility analysis.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clan-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=60"
+                                alt="Sharing Plan">
+                            <div class="card-content">
+                                <h3>Sharing the Plan</h3>
+                                <p>We present our strategy clearly, incorporating your feedback.</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3>Collaboration</h3>
+                            <p>Your input shapes the final plan for optimal results.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clan-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=60"
+                                alt="Delivery Support">
+                            <div class="card-content">
+                                <h3>Delivery & Support</h3>
+                                <p>We deliver excellence and provide ongoing support.</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3>Ongoing Support</h3>
+                            <p>Continuous updates to keep your project thriving.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Culture Section -->
+    <!-- <section class="work-culture-section container-fluid text-white py-5"
+        style="background-color: rgba(22, 90, 74, 1);">
+        <div class="container text-center">
+            <h1 class="display-4">Wanna Know About Our Work Culture?</h1>
+            <a href="#" class="btn btn-light btn-lg mt-3 pulse-btn">Click Here</a>
+        </div>
+    </section> -->
+    <section>
+        <div class="testimonial-section">
+            <h2 class="text-center">What Our Clients Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <img src="client1.jpg" alt="Client 1">
+                    <p>"Develup transformed our business with an amazing website! Highly recommended."</p>
+                    <strong>- John Doe</strong>
+                </div>
+                <div class="testimonial">
+                    <img src="client2.jpg" alt="Client 2">
+                    <p>"Great service and fast delivery. Their SaaS solutions are top-notch!"</p>
+                    <strong>- Jane Smith</strong>
+                </div>
+                <div class="testimonial">
+                    <img src="client3.jpg" alt="Client 3">
+                    <p>"Professional and reliable team. Develup exceeded our expectations!"</p>
+                    <strong>- Mark Wilson</strong>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Support Section -->
+    <section class="support-section py-5 text-center">
+        <div class="container">
+            <h1 class="display-5 fw-bold" style="animation: fadeIn 1s ease-out;">Empowering Tech with Our Support</h1>
+            <div class="mt-3">
+                <i class="fas fa-cog fa-3x" style="color: #165a4a;"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us"
+        style="background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=60'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 450px;">
+        <div class="text-content">
+            <h1>Why Choose Us?</h1>
+            <ul>
+                <li><i class="fas fa-check"></i>Creative & Modern Solutions</li>
+                <li><i class="fas fa-check"></i>Custom-Built For Your Needs</li>
+                <li><i class="fas fa-check"></i>Affordable & Reliable Services</li>
+            </ul>
+            <p>Let’s work together!</p>
+            <a href="#" class="btn btn-success quote-button">Get a quote →</a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Recent Projects</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60"
+                            alt="E-commerce Platform" class="img-fluid rounded">
+                        <div class="p-3">
+                            <h3>E-commerce Platform</h3>
+                            <p>A fully responsive online store with seamless UI/UX.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60"
+                            alt="Team Dashboard" class="img-fluid rounded">
+                        <div class="p-3">
+                            <h3>Team Dashboard</h3>
+                            <p>A custom software for team collaboration and analytics.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60"
+                            alt="Business Website" class="img-fluid rounded">
+                        <div class="p-3">
+                            <h3>Business Website</h3>
+                            <p>A modern site boosting client engagement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonials py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">What Our Clients Say</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card">
+                            <p>"Develup transformed our business with innovative solutions!"</p>
+                            <h5>John Doe, CEO of TechCorp</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card">
+                            <p>"Professional, creative, and always on time."</p>
+                            <h5>Jane Smith, Founder of StartUpX</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card">
+                            <p>"Their support made our project a success."</p>
+                            <h5>Mike Lee, CTO of Innovate</h5>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            What services do you offer?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We provide UI/UX design, website design, software development, and tech consulting.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq2">
+                            How long does a project take?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            It depends on the scope, but typically ranges from 4 weeks to 3 months.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faq3">
+                            Do you offer support after delivery?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we provide ongoing support and maintenance as needed.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-4 text-light mt-5" style="background-color: rgba(22, 90, 74, 1);">
+        <div class="container text-center text-md-start">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>About Us</h5>
+                    <p>We provide the best services with high quality and professionalism.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Services</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <p><i class="bi bi-envelope-fill"></i> info@example.com</p>
+                    <p><i class="bi bi-telephone-fill"></i> +123 456 7890</p>
+                    <p><i class="bi bi-geo-alt-fill"></i> Perundurai, Erode, Tamilnadu</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Follow Us</h5>
+                    <a href="#" class="text-light text-decoration-none d-block"><i class="bi bi-facebook"></i>
+                        Facebook</a>
+                    <a href="#" class="text-light text-decoration-none d-block"><i class="bi bi-twitter"></i>
+                        Twitter</a>
+                    <a href="#" class="text-light text-decoration-none d-block"><i class="bi bi-instagram"></i>
+                        Instagram</a>
+                    <a href="#" class="text-light text-decoration-none d-block"><i class="bi bi-linkedin"></i>
+                        LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3 mt-3 border-top text-light">
+            © 2025 Develup. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qhRhmCOV8odBFv3wh73Cq5hZB1epINx6I1aa42R+pN5C81IbU9E6R3OYZcjyDXV6"
+        crossorigin="anonymous"></script>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                navbar.classList.add('hidden');
+            } else {
+                // Scrolling up
+                navbar.classList.remove('hidden');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+        });
+    </script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                const container = document.querySelector(".testimonial-container");
+                container.style.opacity = "1";
+                container.style.animation = "scroll 40s linear infinite";
+            }, 5000);
+        });
+    </script>
+
+</body>
+
+</html>
